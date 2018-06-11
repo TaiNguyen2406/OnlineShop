@@ -23,6 +23,11 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult Edit(int id)
+        {
+            var user = new UserDao().ViewDetail(id);
+            return View(user);
+        }
         [HttpPost]
         public ActionResult Create(User user)
         {

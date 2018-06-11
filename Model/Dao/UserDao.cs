@@ -23,13 +23,36 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.ID;
         }
+        public bool Update(User entity)
+        {
+            try
+            {
+                var user = db.Users.Find(entity.ID);
+                user.Name = entity.Name;
+                user.Address = entity.Address;
+                user.Email = entity.Email;
+                user.ModifiedBy = entity.ModifiedBy;
+                user.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
         public IEnumerable<User> ListAllPaging(int page, int pageSize)
         {
-            return db.Users.OrderByDescending(x=>x.CreatedDate).ToPagedList(page, pageSize);
+            return db.Users.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
         public User GetbyId(string userName)
         {
             return db.Users.SingleOrDefault(x => x.UserName == userName);
+        }
+        public User ViewDetail(int id)
+        {
+            return db.Users.Find(id);
         }
         public int Login(string userName, string passWord)
         {
