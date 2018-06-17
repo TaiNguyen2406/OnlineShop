@@ -47,10 +47,30 @@ namespace OnlineShop.Areas.Admin.Controllers
                 }
             }
             return View("Index");
-
-
-
-
+        }
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserDao();
+                if(!String.IsNullOrEmpty(user.Password))
+                {
+                    var encryptedMD5Pas = Encrytor.MD5Hash(user.Password);
+                    user.Password = encryptedMD5Pas;
+                  
+                }
+                var result = dao.Update(user);
+                if (result)
+                {
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhật user thành công");
+                }
+            }
+            return View("Index");
         }
     }
 }

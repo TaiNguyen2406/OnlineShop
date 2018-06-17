@@ -29,6 +29,10 @@ namespace Model.Dao
             {
                 var user = db.Users.Find(entity.ID);
                 user.Name = entity.Name;
+                if (!String.IsNullOrEmpty(user.Password))
+                {
+                    user.Password = entity.Password;
+                }
                 user.Address = entity.Address;
                 user.Email = entity.Email;
                 user.ModifiedBy = entity.ModifiedBy;
