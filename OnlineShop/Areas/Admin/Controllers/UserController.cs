@@ -13,7 +13,7 @@ namespace OnlineShop.Areas.Admin.Controllers
     {
         // GET: Admin/User
         [HttpGet]
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 2)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var dao = new UserDao();
             var model = dao.ListAllPaging(searchString,page, pageSize);
