@@ -1438,6 +1438,7 @@
     <Content Include="assets\admin\js\plugins\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
     <Content Include="assets\admin\js\plugins\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="assets\admin\js\plugins\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
