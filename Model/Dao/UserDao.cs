@@ -19,6 +19,8 @@ namespace Model.Dao
 
         public long Insert(User entity)
         {
+            if (entity.CreatedDate == null)
+                entity.CreatedDate = DateTime.Now;
             db.Users.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -46,6 +48,14 @@ namespace Model.Dao
             }
 
         }
+
+        public bool ChangeStatus(long id)
+        {
+            var user = db.Users.Find(id);
+            user.Status = !user.Status;
+            db.SaveChanges();
+            return user.Status;
+        }
         public bool Delete(int id)
         {
             try
@@ -68,7 +78,7 @@ namespace Model.Dao
             {
                 model =model.Where(x=>x.UserName.Contains(searchStrimg)|| x.Name.Contains(searchStrimg));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderByDescending(x => x.ID).ToPagedList(page, pageSize);
         }
         public User GetbyId(string userName)
         {

@@ -25,15 +25,15 @@ namespace Model.EF
 
         public string GroupID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         [Display(Name = "Họ tên")]
         public string Name { get; set; }
 
-        [StringLength(50)]
+        [StringLength(5000)]
         [Display(Name = "Địa chỉ")]
         public string Address { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string Email { get; set; }
 
         [StringLength(50)]

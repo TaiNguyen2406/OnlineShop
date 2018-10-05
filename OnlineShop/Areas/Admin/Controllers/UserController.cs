@@ -16,7 +16,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var dao = new UserDao();
-            var model = dao.ListAllPaging(searchString,page, pageSize);
+            var model = dao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
             return View(model);
         }
@@ -41,11 +41,13 @@ namespace OnlineShop.Areas.Admin.Controllers
                 long id = dao.Insert(user);
                 if (id > 0)
                 {
+                    SetAlert("Thêm user thành công","success");
                     return RedirectToAction("Index", "User");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Thêm user thành công");
+                    SetAlert("Thêm user thất bại", "error");
+                    ModelState.AddModelError("", "Thêm user thất bại");
                 }
             }
             return View("Index");
@@ -56,20 +58,22 @@ namespace OnlineShop.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                if(!String.IsNullOrEmpty(user.Password))
+                if (!String.IsNullOrEmpty(user.Password))
                 {
                     var encryptedMD5Pas = Encrytor.MD5Hash(user.Password);
                     user.Password = encryptedMD5Pas;
-                  
+
                 }
                 var result = dao.Update(user);
                 if (result)
                 {
+                    SetAlert("Cập nhật  user thành công", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhật user thành công");
+                    SetAlert("Cập nhật user thất bại", "error");
+                    ModelState.AddModelError("", "Cập nhật user thất bại");
                 }
             }
             return View("Index");
@@ -79,6 +83,15 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             new UserDao().Delete(id);
             return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new UserDao().ChangeStatus((id));
+            return Json(new
+            {
+                status = result
+            });
         }
     }
 }
