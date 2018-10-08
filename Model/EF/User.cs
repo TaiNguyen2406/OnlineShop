@@ -22,7 +22,7 @@ namespace Model.EF
         public string Password { get; set; }
 
         [StringLength(20)]
-
+        [Display(Name = "Nhóm người dùng")]
         public string GroupID { get; set; }
 
         [StringLength(500)]

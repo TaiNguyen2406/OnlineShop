@@ -37,6 +37,8 @@ namespace Model.Dao
                 }
                 user.Address = entity.Address;
                 user.Email = entity.Email;
+                user.GroupID = entity.GroupID;
+                user.Status = entity.Status;
                 user.ModifiedBy = entity.ModifiedBy;
                 user.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
@@ -84,6 +86,7 @@ namespace Model.Dao
         {
             return db.Users.SingleOrDefault(x => x.UserName == userName);
         }
+    
         public User ViewDetail(int id)
         {
             return db.Users.Find(id);
@@ -115,5 +118,6 @@ namespace Model.Dao
             }
 
         }
+     
     }
 }

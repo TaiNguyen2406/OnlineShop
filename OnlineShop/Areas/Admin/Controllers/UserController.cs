@@ -21,16 +21,20 @@ namespace OnlineShop.Areas.Admin.Controllers
             return View(model);
         }
         [HttpGet]
+     
         public ActionResult Create()
         {
+            SetViewBag();
             return View();
         }
         public ActionResult Edit(int id)
         {
             var user = new UserDao().ViewDetail(id);
+            SetViewBag(user.GroupID);
             return View(user);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(User user)
         {
             if (ModelState.IsValid)
@@ -50,6 +54,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Thêm user thất bại");
                 }
             }
+            SetViewBag();
             return View("Index");
         }
         [HttpPost]
@@ -76,12 +81,15 @@ namespace OnlineShop.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Cập nhật user thất bại");
                 }
             }
+
+            SetViewBag(user.GroupID);
             return View("Index");
         }
         [HttpDelete]
         public ActionResult Delete(int id)
         {
             new UserDao().Delete(id);
+            SetViewBag();
             return RedirectToAction("Index");
         }
         [HttpPost]
@@ -92,6 +100,11 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 status = result
             });
+        }
+        public void SetViewBag(string selectedId = null)
+        {
+            var dao = new UserGroupDao();
+            ViewBag.GroupID = new SelectList(dao.ListAll(), "ID", "Name", selectedId);
         }
     }
 }

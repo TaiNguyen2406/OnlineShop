@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Model.EF
 {
     using System;
@@ -10,9 +12,11 @@ namespace Model.EF
     public partial class UserGroup
     {
         [StringLength(20)]
+        [Display(Name = "ID")]
         public string ID { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Tên nhóm")]
         public string Name { get; set; }
     }
 }
