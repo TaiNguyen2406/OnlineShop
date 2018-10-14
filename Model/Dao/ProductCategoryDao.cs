@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using Model.EF;
 using PagedList;
 
@@ -91,7 +92,8 @@ namespace Model.Dao
         }
         public List<ProductCategory> ListAll()
         {
-            return db.ProductCategories.ToList();
+            return db.ProductCategories.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
         }
+         
     }
 }

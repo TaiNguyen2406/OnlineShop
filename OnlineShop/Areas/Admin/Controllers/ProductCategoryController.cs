@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
 using Model.EF;
+using OnlineShop.Common;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -36,6 +37,8 @@ namespace OnlineShop.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new ProductCategoryDao();
+                var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+                model.CreatedBy = session.UserName;
                 long id = dao.Insert(model);
                 SetAlert("Thêm category product thành công", "success");
                 return RedirectToAction("Index", "ProductCategory");
