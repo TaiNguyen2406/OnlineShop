@@ -11,32 +11,33 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="/assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/assets/client/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/client/css/bootstrap.css" rel="stylesheet" />
+
     <script type="text/javascript" src="/assets/client/js/jquery-1.7.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+            crossorigin="anonymous"></script>
+    <script src="/assets/client/js/popper.js"></script>
+    <script type="text/javascript" src="/assets/client/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" data-auto-replace-svg="nest"></script>
     <script type="text/javascript" src="/assets/client/js/move-top.js"></script>
     <script type="text/javascript" src="/assets/client/js/easing.js"></script>
     <script type="text/javascript" src="/assets/client/js/startstop-slider.js"></script>
+    <img src="~/assets/client/images/facebook.png" />
+
 </head>
 <html>
 <body>
     <div class="wrap">
         <div class="header">
             <div class="headertop_desc">
-             @{Html.RenderAction("TopMenu","Home");}
+                @{Html.RenderAction("TopMenu", "Home");}
             </div>
             <div class="header_top">
                 <div class="logo">
-                    <a href="/"><img src="/assets/client/images/logo.png" alt="" /></a>
+                    <a href="/" ref="nofollow"><img src="/assets/client/images/logo.png" alt="" /></a>
                 </div>
-                <div class="cart">
-                    <p>
-                        Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2">
-                            0 item(s) - $0.00
-                            <ul class="dropdown">
-                                <li>you have no items in your Shopping cart</li>
-                            </ul>
-                        </div>
-                    </p>
-                </div>
+               @{ Html.RenderAction("HeaderCart","Home");}
                 <script type="text/javascript">
                     function DropDown(el) {
                         this.dd = el;
@@ -68,7 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="clear"></div>
             </div>
             <div class="header_bottom">
-               @{ Html.RenderAction("MainMenu","Home");}
+                @{ Html.RenderAction("MainMenu", "Home");}
                 <div class="search_box">
                     <form>
                         <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
@@ -76,14 +77,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="clear"></div>
             </div>
-           @RenderSection("slide",required:false)
+            @RenderSection("slide", required: false)
         </div>
         <div class="main">
-          @RenderBody()
+            @RenderBody()
         </div>
     </div>
     <div class="footer">
-        @{Html.RenderAction("Footer","Home");}
+        @{Html.RenderAction("Footer", "Home");}
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -92,6 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+    @RenderSection("jsFooter", required: false);
 </body>
 </html>
 

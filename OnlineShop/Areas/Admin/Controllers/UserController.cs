@@ -34,7 +34,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             return View(user);
         }
         [HttpPost]
-        [ValidateInput(false)]
+        //[ValidateInput(false)]
         public ActionResult Create(User user)
         {
             if (ModelState.IsValid)
@@ -53,11 +53,19 @@ namespace OnlineShop.Areas.Admin.Controllers
                     SetAlert("Thêm user thất bại", "error");
                     ModelState.AddModelError("", "Thêm user thất bại");
                 }
+                SetViewBag();
+                return View("Index");
             }
-            SetViewBag();
-            return View("Index");
+            else
+            {
+                SetAlert("Thêm user thất bại", "error");
+                ModelState.AddModelError("", "Thêm user thất bại");
+                return RedirectToAction("Index", "User");
+            }
+           
         }
         [HttpPost]
+        //[ValidateInput(true)]
         public ActionResult Edit(User user)
         {
             if (ModelState.IsValid)
@@ -105,6 +113,17 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             var dao = new UserGroupDao();
             ViewBag.GroupID = new SelectList(dao.ListAll(), "ID", "Name", selectedId);
+        }
+        [HttpGet]
+        public JsonResult IsEmailExist(string Email)
+        {
+            var users= new UserDao();
+            bool isExist = false;
+            if (users.ExitsMail(Email))
+            {
+                isExist = true;
+            }
+            return Json(!isExist, JsonRequestBehavior.AllowGet);
         }
     }
 }

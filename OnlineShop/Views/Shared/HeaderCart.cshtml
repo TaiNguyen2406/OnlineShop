@@ -1,0 +1,19 @@
+﻿@model List<OnlineShop.Models.CartItem>
+<div class="cart">
+    <p>
+        Chào mừng bạn đến với Online shop
+        <a href="/gio-hang" class="wish-list" > Giỏ hàng:</a> <div id="dd" class="wrapper-dropdown-2">
+            @{
+                int thanhtien = 0;
+                foreach (var item in Model)
+                {
+                    thanhtien += item.Quantity * (int) item.Product.Price;
+                }
+            }
+            @Model.Count sản phẩm - @thanhtien.ToString("N0");
+            <ul class="dropdown">
+                <li>Không có sản phẩm nào trong giỏ</li>
+            </ul>
+        </div>
+    </p>
+</div>

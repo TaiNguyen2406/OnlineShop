@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
+using OnlineShop.Common;
+using OnlineShop.Models;
 
 namespace OnlineShop.Controllers
 {
@@ -29,6 +31,18 @@ namespace OnlineShop.Controllers
         {
             var model = new MenuDao().ListByGroupID(2);
             return PartialView(model);
+        }
+        [ChildActionOnly]
+        public PartialViewResult HeaderCart()
+        {
+            var cart = Session[CommonConstants.CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+
+            }
+            return PartialView(list);
         }
         [ChildActionOnly]
         public ActionResult Footer()

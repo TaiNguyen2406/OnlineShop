@@ -37,7 +37,7 @@
                 </div>
                 <!-- /.row -->
                 @if (TempData["AlertMessage"] != null)
-                    {
+                {
                     <div id="AlertBox" class="alert @TempData["AlertType"] hide">
                         @TempData["AlertMessage"]
                     </div>
@@ -51,6 +51,8 @@
     <!-- /#wrapper -->
     <!-- jQuery -->
     <script src="/assets/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/assets/admin/vendor/bootstrap/js/bootstrap.min.js"></script>

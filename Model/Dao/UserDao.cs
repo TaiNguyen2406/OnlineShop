@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using PagedList;
@@ -117,6 +119,17 @@ namespace Model.Dao
                 }
             }
 
+        }
+
+        public Boolean ExitsMail(string Email)
+        {
+            var result = db.Users.Where(x => x.Email== Email).ToList();
+            if (result == null || result.Count()<=1)
+                return false;
+            else
+            {
+                return true;
+            }
         }
      
     }

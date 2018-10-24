@@ -98,6 +98,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -213,12 +214,14 @@
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encrytor.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\UserLogin.cs" />
   </ItemGroup>
@@ -1349,10 +1352,30 @@
     <Content Include="assets\admin\vendor\morrisjs\morris.min.js" />
     <Content Include="assets\admin\vendor\raphael\raphael.js" />
     <Content Include="assets\admin\vendor\raphael\raphael.min.js" />
+    <Content Include="assets\client\css\all.css" />
+    <Content Include="assets\client\css\all.min.css" />
+    <Content Include="assets\client\css\bootstrap-grid.css" />
+    <Content Include="assets\client\css\bootstrap-grid.min.css" />
+    <Content Include="assets\client\css\bootstrap-reboot.css" />
+    <Content Include="assets\client\css\bootstrap-reboot.min.css" />
+    <Content Include="assets\client\css\bootstrap.css" />
+    <Content Include="assets\client\css\bootstrap.min.css" />
+    <Content Include="assets\client\css\brands.css" />
+    <Content Include="assets\client\css\brands.min.css" />
     <Content Include="assets\client\css\easy-responsive-tabs.css" />
+    <Content Include="assets\client\css\fontawesome.css" />
+    <Content Include="assets\client\css\fontawesome.min.css" />
     <Content Include="assets\client\css\global.css" />
+    <Content Include="assets\client\css\regular.css" />
+    <Content Include="assets\client\css\regular.min.css" />
     <Content Include="assets\client\css\slider.css" />
+    <Content Include="assets\client\css\solid.css" />
+    <Content Include="assets\client\css\solid.min.css" />
     <Content Include="assets\client\css\style.css" />
+    <Content Include="assets\client\css\svg-with-js.css" />
+    <Content Include="assets\client\css\svg-with-js.min.css" />
+    <Content Include="assets\client\css\v4-shims.css" />
+    <Content Include="assets\client\css\v4-shims.min.css" />
     <Content Include="assets\client\images\about_img.jpg" />
     <Content Include="assets\client\images\arrow-next.png" />
     <Content Include="assets\client\images\arrow-prev.png" />
@@ -1403,15 +1426,35 @@
     <Content Include="assets\client\images\twitter.png" />
     <Content Include="assets\client\images\value-rating.png" />
     <Content Include="assets\client\images\wishlist.png" />
+    <Content Include="assets\client\js\all.js" />
+    <Content Include="assets\client\js\all.min.js" />
+    <Content Include="assets\client\js\bootstrap.min.js" />
+    <Content Include="assets\client\js\brands.js" />
+    <Content Include="assets\client\js\brands.min.js" />
+    <Content Include="assets\client\js\controller\cartControllert.js" />
     <Content Include="assets\client\js\easing.js" />
     <Content Include="assets\client\js\easyResponsiveTabs.js" />
+    <Content Include="assets\client\js\fontawesome.js" />
+    <Content Include="assets\client\js\fontawesome.min.js" />
     <Content Include="assets\client\js\jquery-1.7.2.min.js" />
+    <Content Include="assets\client\js\jquery-3.3.1.min.js" />
     <Content Include="assets\client\js\jquery.accordion.js" />
     <Content Include="assets\client\js\jquery.easing.js" />
     <Content Include="assets\client\js\move-top.js" />
+    <Content Include="assets\client\js\popper.js" />
+    <Content Include="assets\client\js\regular.js" />
+    <Content Include="assets\client\js\regular.min.js" />
     <Content Include="assets\client\js\script.js" />
     <Content Include="assets\client\js\slides.min.jquery.js" />
+    <Content Include="assets\client\js\solid.js" />
+    <Content Include="assets\client\js\solid.min.js" />
     <Content Include="assets\client\js\startstop-slider.js" />
+    <Content Include="assets\client\js\v4-shims.js" />
+    <Content Include="assets\client\js\v4-shims.min.js" />
+    <Content Include="assets\client\template\neworder.html" />
+    <Content Include="assets\webfonts\fa-brands-400.svg" />
+    <Content Include="assets\webfonts\fa-regular-400.svg" />
+    <Content Include="assets\webfonts\fa-solid-900.svg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1512,6 +1555,42 @@
     <Content Include="Areas\Admin\Views\UserGroup\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Create.cshtml" />
+    <Content Include="assets\client\css\bootstrap-grid.css.map" />
+    <Content Include="assets\client\css\bootstrap-grid.min.css.map" />
+    <Content Include="assets\client\css\bootstrap-reboot.css.map" />
+    <Content Include="assets\client\css\bootstrap-reboot.min.css.map" />
+    <Content Include="assets\client\css\bootstrap.css.map" />
+    <Content Include="assets\client\css\bootstrap.min.css.map" />
+    <Content Include="assets\client\scss\brands.scss" />
+    <Content Include="assets\client\scss\fontawesome.scss" />
+    <Content Include="assets\client\scss\regular.scss" />
+    <Content Include="assets\client\scss\solid.scss" />
+    <Content Include="assets\client\scss\v4-shims.scss" />
+    <Content Include="assets\client\scss\_animated.scss" />
+    <Content Include="assets\client\scss\_bordered-pulled.scss" />
+    <Content Include="assets\client\scss\_core.scss" />
+    <Content Include="assets\client\scss\_fixed-width.scss" />
+    <Content Include="assets\client\scss\_icons.scss" />
+    <Content Include="assets\client\scss\_larger.scss" />
+    <Content Include="assets\client\scss\_list.scss" />
+    <Content Include="assets\client\scss\_mixins.scss" />
+    <Content Include="assets\client\scss\_rotated-flipped.scss" />
+    <Content Include="assets\client\scss\_screen-reader.scss" />
+    <Content Include="assets\client\scss\_shims.scss" />
+    <Content Include="assets\client\scss\_stacked.scss" />
+    <Content Include="assets\client\scss\_variables.scss" />
+    <Content Include="assets\webfonts\fa-brands-400.eot" />
+    <Content Include="assets\webfonts\fa-brands-400.ttf" />
+    <Content Include="assets\webfonts\fa-brands-400.woff" />
+    <Content Include="assets\webfonts\fa-brands-400.woff2" />
+    <Content Include="assets\webfonts\fa-regular-400.eot" />
+    <Content Include="assets\webfonts\fa-regular-400.ttf" />
+    <Content Include="assets\webfonts\fa-regular-400.woff" />
+    <Content Include="assets\webfonts\fa-regular-400.woff2" />
+    <Content Include="assets\webfonts\fa-solid-900.eot" />
+    <Content Include="assets\webfonts\fa-solid-900.ttf" />
+    <Content Include="assets\webfonts\fa-solid-900.woff" />
+    <Content Include="assets\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1526,7 +1605,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1544,13 +1625,17 @@
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\HeaderCart.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Cart\Success.cshtml" />
+    <Content Include="Views\Cart\Fail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="assets\admin\pages\" />
     <Folder Include="Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1561,6 +1646,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{0605dc58-e7d4-437d-8560-9786d9071303}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{597f1652-8eb3-4ddb-8526-791049c4fc5a}</Project>
       <Name>Model</Name>
