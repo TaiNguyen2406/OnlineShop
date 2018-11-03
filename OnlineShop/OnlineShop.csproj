@@ -215,6 +215,7 @@
     <Compile Include="Common\Encrytor.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,6 +233,7 @@
     <Content Include="assets\admin\dist\css\sb-admin-2.min.css" />
     <Content Include="assets\admin\dist\js\sb-admin-2.js" />
     <Content Include="assets\admin\dist\js\sb-admin-2.min.js" />
+    <Content Include="assets\admin\js\controller\contactController.js" />
     <Content Include="assets\admin\js\controller\userController.js" />
     <Content Include="assets\admin\js\plugins\ckeditor\adapters\jquery.js" />
     <Content Include="assets\admin\js\plugins\ckeditor\build-config.js" />
@@ -1451,6 +1453,7 @@
     <Content Include="assets\client\js\startstop-slider.js" />
     <Content Include="assets\client\js\v4-shims.js" />
     <Content Include="assets\client\js\v4-shims.min.js" />
+    <Content Include="assets\client\template\newfeedback.html" />
     <Content Include="assets\client\template\neworder.html" />
     <Content Include="assets\webfonts\fa-brands-400.svg" />
     <Content Include="assets\webfonts\fa-regular-400.svg" />
@@ -1630,6 +1633,7 @@
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Cart\Success.cshtml" />
     <Content Include="Views\Cart\Fail.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1673,7 +1677,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49704</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49704/</IISUrl>
+          <IISUrl>http://localhost:49705/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
